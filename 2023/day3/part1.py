@@ -1,0 +1,1 @@
+a = open(0).read().strip().splitlines()
