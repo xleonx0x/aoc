@@ -13,12 +13,14 @@ int x = 0;
 int ans = 0;
 vector<int> list1;
 vector<int> list2;
-std::unordered_map<int, int> dict;
+std::unordered_map<int, int> freq;
 
 int main(void) {
     inputFile = fopen("input.txt", "r");
     
+    // read input
     while (fscanf(inputFile, "%d", &num) == 1) {
+        // alternate between pushing to lists
         if (x % 2 == 0) {
             list1.push_back(num);
         } else {
@@ -29,16 +31,18 @@ int main(void) {
 
     fclose(inputFile);
 
+    // get frequency of all list2 numbers
     for (int num : list2) {
-        if (dict.find(num) != dict.end()) {
-            dict[num] += 1;
+        if (freq.find(num) != freq.end()) {
+            freq[num] += 1;
         } else {
-            dict[num] = 1;
+            freq[num] = 1;
         }
     }
 
+    // iterate over list1 and multiply it by freq
     for (int num : list1) {
-        ans += num * dict[num];
+        ans += num * freq[num];
     }
 
     cout << ans << '\n';
