@@ -18,8 +18,8 @@ ll ans = 0;
 int main(void) {
     auto start = high_resolution_clock::now();
     // // Optimize input and output
-    // cin.tie(nullptr);
-    // cin.sync_with_stdio(false);
+    cin.tie(nullptr);
+    cin.sync_with_stdio(false);
     
     ifstream inputFile("input.txt");
     string line;
@@ -51,16 +51,7 @@ int main(void) {
     }
 
     ll Ids = (arr.size() - 1) / 2;
-    //  for (int i = 0 ; i < disk.size(); i++) {
-    //     if (disk[i] == -1) {
-    //         cout<< '.';
-    //     } else {
-    //         cout << disk[i];
-    //     }
-    // }
-    // cout << '\n';
 
-    fflush(stdout);
     while (Ids >= 0) {
         ll j = disk.size() - 1;
         bool in_file = false;
@@ -103,15 +94,6 @@ int main(void) {
                 break;
             }
         }
-                // for (int i = 0 ; i < disk.size(); i++) {
-                //     if (disk[i] == -1) {
-                //         cout<< '.';
-                //     } else {
-                //         cout << disk[i];
-                //     }
-                // }
-                // cout << '\n';
-                // cout << i;
         Ids--;
     }
    
@@ -124,13 +106,11 @@ int main(void) {
         }
         ans += i * pos; 
         pos++;
-        // printf("%d * %d\n", i, pos);
     }
 
-    // ARR1(disk);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
-
+    
     // PRINT(duration.count());
     PRINT(ans);
 }
