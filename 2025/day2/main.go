@@ -62,18 +62,19 @@ func part2() {
 		for i <= half2 {
 			i_str := strconv.Itoa(i)
 			length := len(i_str)
-			
 			j := 1
-			for j < length/2 + 1 {
+			for j < length {
+				if length % j != 0 {
+					j += 1
+					continue
+				}
+				
+				k := j
+				
 				flag := true
-				k := 0
-				// fmt.Println(j)
-				start := i_str[0:j]
-				// fmt.Println("starting", start)
-				for k+j <= length {
-					// fmt.Println(i_str[k:k+j], start)
-					// fmt.Println(j)
-					if i_str[k:k+j] != start {
+				starting := i_str[0:j]
+				for k < length {
+					if i_str[k:k+j] != starting {
 						flag = false
 						break
 					}
@@ -81,10 +82,10 @@ func part2() {
 				}
 
 				if flag {
-					fmt.Println(i)
 					ans += i
+					break
 				}
-
+				
 				j += 1
 			}
 			
